@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SathiX</string>
+    <string name="hint_phone">Phone number with country code</string>
+    <string name="hint_otp">Enter OTP</string>
+    <string name="action_send_otp">Send OTP</string>
+    <string name="action_verify">Verify</string>
+    <string name="action_send">Send</string>
+    <string name="hint_message">Message</string>
+</resources>

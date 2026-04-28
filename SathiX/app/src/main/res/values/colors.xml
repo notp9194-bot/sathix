@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_primary">#075E54</color>
+    <color name="brand_primary_dark">#054D44</color>
+    <color name="brand_accent">#25D366</color>
+    <color name="brand_teal">#128C7E</color>
+    <color name="brand_light">#DCF8C6</color>
+    <color name="bg">#FFFFFF</color>
+    <color name="bg_chat">#ECE5DD</color>
+    <color name="text_primary">#111B21</color>
+    <color name="text_secondary">#667781</color>
+    <color name="bubble_in">#FFFFFF</color>
+    <color name="bubble_out">#D9FDD3</color>
+    <color name="divider">#E9EDEF</color>
+    <color name="error">#E53935</color>
+</resources>

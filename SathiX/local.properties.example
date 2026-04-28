@@ -1,0 +1,11 @@
+sdk.dir=/path/to/Android/Sdk
+
+CLOUDINARY_CLOUD_NAME=dvqqgqdls
+CLOUDINARY_API_KEY=YOUR_CLOUDINARY_API_KEY
+CLOUDINARY_API_SECRET=YOUR_CLOUDINARY_API_SECRET
+
+SIGNALING_SERVER_URL=https://your-render-app.onrender.com
+STUN_SERVER=stun:stun.l.google.com:19302
+TURN_SERVER=turn:your.turn.server:3478
+TURN_USERNAME=
+TURN_PASSWORD=

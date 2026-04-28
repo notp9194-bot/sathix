@@ -24,8 +24,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: 8.7
 
       - name: Generate Gradle wrapper if missing
         run: |
@@ -34,14 +32,19 @@ jobs:
           fi
           chmod +x gradlew
 
+      # 🔥 SAFE KEYSTORE HANDLING (FIXED)
       - name: Decode keystore (if provided)
-        if: ${{ secrets.SIGNING_KEYSTORE != '' }}
         env:
           SIGNING_KEYSTORE: ${{ secrets.SIGNING_KEYSTORE }}
         run: |
-          mkdir -p $HOME/.keystore
-          echo "$SIGNING_KEYSTORE" | base64 --decode > $HOME/.keystore/release.keystore
-          echo "KEYSTORE_PATH=$HOME/.keystore/release.keystore" >> $GITHUB_ENV
+          if [ -n "$SIGNING_KEYSTORE" ]; then
+            mkdir -p $HOME/.keystore
+            echo "$SIGNING_KEYSTORE" | base64 --decode > $HOME/.keystore/release.keystore
+            echo "KEYSTORE_PATH=$HOME/.keystore/release.keystore" >> $GITHUB_ENV
+            echo "Keystore loaded"
+          else
+            echo "No keystore provided, skipping signing"
+          fi
 
       - name: Set version code from run number
         run: |
@@ -59,16 +62,16 @@ jobs:
           TURN_USERNAME: ${{ secrets.TURN_USERNAME }}
           TURN_PASSWORD: ${{ secrets.TURN_PASSWORD }}
         run: |
-          {
-            echo "CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME:-dvqqgqdls}"
-            echo "CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}"
-            echo "CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}"
-            echo "SIGNALING_SERVER_URL=${SIGNALING_SERVER_URL:-https://your-render-app.onrender.com}"
-            echo "STUN_SERVER=${STUN_SERVER:-stun:stun.l.google.com:19302}"
-            echo "TURN_SERVER=${TURN_SERVER}"
-            echo "TURN_USERNAME=${TURN_USERNAME}"
-            echo "TURN_PASSWORD=${TURN_PASSWORD}"
-          } >> local.properties
+          cat <<EOF >> local.properties
+CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME:-dvqqgqdls}
+CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
+CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
+SIGNALING_SERVER_URL=${SIGNALING_SERVER_URL:-https://your-render-app.onrender.com}
+STUN_SERVER=${STUN_SERVER:-stun:stun.l.google.com:19302}
+TURN_SERVER=${TURN_SERVER}
+TURN_USERNAME=${TURN_USERNAME}
+TURN_PASSWORD=${TURN_PASSWORD}
+EOF
 
       - name: Build Debug APK
         run: ./gradlew :app:assembleDebug --no-daemon --stacktrace

@@ -1,22 +1,41 @@
 {
   "project_info": {
     "project_number": "591904565893",
+    "firebase_url": "https://callingapp1-f699d-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "callingapp1-f699d",
-    "storage_bucket": "callingapp1-f699d.firebasestorage.app",
-    "firebase_url": "https://callingapp1-f699d-default-rtdb.asia-southeast1.firebasedatabase.app"
+    "storage_bucket": "callingapp1-f699d.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:591904565893:android:578f827b804f36097ad7ec",
+        "mobilesdk_app_id": "1:591904565893:android:3c77137688a612267ad7ec",
         "android_client_info": {
-          "package_name": "com.sathix.app"
+          "package_name": "com.callingapp.pro"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDf5q7XWkWevNxGjoojD9LXuV481_h4qfo"
+          "current_key": "AIzaSyC-nR8bQNMwxcUN16_mICpcwJ9dDBv9cBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591904565893:android:fea11bea079b18a97ad7ec",
+        "android_client_info": {
+          "package_name": "com.sathix.app.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-nR8bQNMwxcUN16_mICpcwJ9dDBv9cBQ"
         }
       ],
       "services": {
